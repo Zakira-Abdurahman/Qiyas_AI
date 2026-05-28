@@ -123,4 +123,15 @@
 
 # words = ["python", "for", "python"]
 # for i in range(len(words)):
-#     print(words[i])
+#     print(words[index])
+
+# li = ["python", "for", "python"]
+# for index in range(len(li)):
+#     print(li[index])
+
+# for i in range(1,5):
+#     for j in range(i + 1):
+#         print(i, end=" ")
+#     print()
+
+
