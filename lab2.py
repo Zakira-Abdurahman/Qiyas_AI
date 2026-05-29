@@ -78,3 +78,45 @@
 # def person(**kwargs):
 #     print(kwargs)
 # person(name="Zak", age=20)
+
+#lab 2 h.w
+
+
+
+
+students = [
+    ("Abel", 45),
+    ("Sara", 80),
+    ("John", 66),
+    ("Mahi", 30),
+    ("Helen", 90)
+    ]
+
+#stores student scores
+scores = [score for name, score in students]
+
+#average score
+average_score = sum(scores) / len(scores)
+print("Average Score:", average_score)
+
+#highest score
+highest_score = max(scores)
+print("Highest Score:", highest_score)
+
+#lowest score
+lowest_score = min(scores)
+print("Lowest Score:", lowest_score)
+
+#passed and failed students
+passed_students = [name for name, score in students if score >= 50]
+failed_students = [name for name, score in students if score <= 50]
+print("passed students:", passed_students)
+print("failed students:", failed_students)
+
+#bonus marks using map()
+bonus_marks = list(map(lambda x: x + 5, scores))
+print("Bonus Marks:", bonus_marks)
+
+#sorted students using lambda
+sorted_students = sorted(students, key=lambda x: x[1], reverse=True)
+print("Sorted Students:", sorted_students)
