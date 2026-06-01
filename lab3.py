@@ -12,7 +12,7 @@ students = [
 
 def calculate_average(student_List):
     """calculate and return the average score"""
-    return sum(score for _, score in student_List) / len(student_List) 
+    return sum( score[1] for score in student_List) / len(student_List) 
 print(calculate_average(students))
 
 def highest_student(student_List):
@@ -69,5 +69,53 @@ def assign_grades(student_List):
     """assign grades based on score using map()"""
     return list(map(lambda x: (x[0], 'A' if x[1] >= 90 else 'B' if x[1] >= 80 else 'C' if x[1] >= 70 else 'D'), student_List))
 print(assign_grades(students))
+
+
+# Exercise 2: Employee Salary Management System
+
+employees = [
+    ("John", "Developer", 5000),
+    ("Sara", "Manager", 7000),
+    ("Mike", "Designer", 4500),
+    ("Helen", "Developer", 6500),
+    ("David", "Manager", 7200)
+]
+
+def highest_paid_employee(employee_list):
+    """return highest paid employee"""
+    return max(employee_list, key=lambda x: x[2])
+print(highest_paid_employee(employees))
+
+def average_salary(employee_list):
+    """calculate average salary"""
+    return sum(emp[2] for emp in employee_list) / len(employee_list)
+print(average_salary(employees))
+
+def above_average_employees(employee_list):
+    """return employees earning above average salary"""
+    return list(filter(lambda x: x[2] > average_salary(employee_list), employee_list))
+print(above_average_employees(employees))
+
+def add_salary_bonus(employee_list):
+    """add 10% bonus salary using map()"""
+    return list(map(lambda x: (x[0], x[1], x[2] * 1.1), employee_list))
+print(add_salary_bonus(employees))
+
+def sort_by_salary_descending(employee_list):
+    """sort employees by salary descending"""
+    return sorted(employee_list, key=lambda x: x[2], reverse=True)
+print(sort_by_salary_descending(employees))
+
+def double_low_salaries(employee_list):
+    """create a list with doubled salaries for salaries below 6000"""
+    return list(map(lambda x: (x[0], x[1], x[2] * 2) if x[2] < 6000 else x, employee_list))
+print(double_low_salaries(employees))
+
+def developers_only(employee_list):
+    """use filter() to return only developers"""
+    return list(filter(lambda x: x[1] == "Developer", employee_list))
+print(developers_only(employees))
+
+
 
 
