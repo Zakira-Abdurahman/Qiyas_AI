@@ -116,6 +116,21 @@ def developers_only(employee_list):
     return list(filter(lambda x: x[1] == "Developer", employee_list))
 print(developers_only(employees))
 
+# Exercise 3: Product Inventory Analyzer
+
+products = [
+    ("Laptop", 15, 70000),
+    ("Mouse", 50, 1200),
+    ("Keyboard",30, 2500),
+    ("Monitor", 20, 8000),
+    ("USB", 100, 500)
+    ]
+
+def total_inventory_value(product_List):
+    """calculate total inventory value (quantity * price)"""
+    return sum(qty * price for product, qty, price in product_List)
+
+
 
 
 
