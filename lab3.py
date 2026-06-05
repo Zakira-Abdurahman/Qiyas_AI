@@ -118,6 +118,7 @@ print(developers_only(employees))
 
 # Exercise 3: Product Inventory Analyzer
 
+
 products = [
     ("Laptop", 15, 70000),
     ("Mouse", 50, 1200),
@@ -129,8 +130,127 @@ products = [
 def total_inventory_value(product_List):
     """calculate total inventory value (quantity * price)"""
     return sum(qty * price for product, qty, price in product_List)
+print(total_inventory_value(products))
+
+def most_expensive_product(product_List):
+    """return most expensive product"""
+    return max(products, key=lambda x: x[2])
+print(most_expensive_product(products))
+
+def low_stock_products(product_List):
+    """return products with quantity < 20"""
+    return list(filter(lambda x: x[1] < 20, product_List))
+print(low_stock_products(products))
+
+def increase_prices(product_list):
+        """increase prices by 15% using map()"""
+        return list(map(lambda x: (x[0], x[1], x[2] * 1.15),product_list))
+print(increase_prices(products))
+
+def sort_products_by_quantity(product_list):
+     """sort products by quantity"""
+     return sorted(product_list, key=lambda x: x[1])
+print(sort_products_by_quantity(products))
+
+def process_quantities(product_list):
+     """square even quantities ans cube odd quantities"""
+     return list(map(lambda x: (x[0], x[1] ** 2, x[2]) if x[1] % 2 == 0 else (x[0], x[1] ** 3, x[2]), product_list))
+print(process_quantities(products))
+    
+def expensive_products(product_list):
+     """use filter() to get products costing above 5000"""
+     return list(filter(lambda x: x[2] > 5000, product_list))
+print(expensive_products(products))
+
+#exercises 4
+movies = [
+    ("Inception", 8.8),
+    ("Titanic", 7.9),
+    ("Avatar", 8.1),
+    ("Batman", 6.5),
+    ("Joker", 9.0),
+    ("Frozen", 5.9)
+]
+
+def highest_rated_movie(movie_list):
+    """return highest rated movie"""
+    return max(movie_list, key=lambda x: x[1])
+print(highest_rated_movie(movies))
+
+def lowest_rated_movie(movie_list):
+    """return lowest rated movie"""
+    return min(movie_list, key=lambda x: x[1])
+print(lowest_rated_movie(movies))
+
+def average_rating(movie_list):
+    """calculate average movie rating"""
+    return sum(rating[1] for rating in movie_list) / len(movie_list)
+print(average_rating(movies))
+
+def movies_above_8(movie_list):
+    """use filter() to return movies above 8.0"""
+    return list(filter(lambda x: x[1] > 8.0, movie_list))
+print(movies_above_8(movies))
+
+def sort_movies(movie_list):
+    """sort movies by rating descending"""
+    return sorted(movie_list, key=lambda x: x[1], reverse=True)
+print(sort_movies(movies))
+
+def process_ratings(movie_list):
+    """square ratings above 7 and cube ratitng below 7 using map()"""
+    return list(map(lambda x: (x[0], x[1] ** 2) if x[1] > 7 else (x[0], x[1] ** 3), movie_list))
+print(process_ratings(movies))
 
 
+def add_rating_bonus(movie_list):
+    """add 0.5 bonus rating using map()"""
+    return list(map(lambda x: (x[0], x[1] + 0.5), movie_list))
+print(add_rating_bonus(movies))
+
+#exercise 5
+
+courses = [
+    ("Math", 45),
+    ("Physics", 60),
+    ("Biology", 25),
+    ("Chemistry", 75),
+    ("History", 30)
+]
 
 
+def highest_enrollment(course_list):
+    """Return course with highest enrollment."""
+    return max(course_list, key=lambda x: x[1])
+print(highest_enrollment(courses))
 
+def low_enrollment_courses(course_list):
+    """Return courses with enrollment below 40."""
+    return list(filter(lambda x: x[1] < 40, course_list))
+
+print(low_enrollment_courses(courses))
+
+def total_registered_students(course_list):
+    """Calculate total registered students."""
+    return sum(enrollment for course, enrollment in course_list)        
+print(total_registered_students(courses))
+
+def add_extra_students(course_list):
+    """Add 5 extra students using map()."""
+    return list(map(lambda x: (x[0], x[1] + 5), course_list))
+print(add_extra_students(courses))
+
+def sort_courses(course_list):
+    """Sort courses by enrollment."""
+    return sorted(course_list, key=lambda x: x[1])
+print(sort_courses(courses))
+
+def process_enrollments(course_list):
+    """Square even enrollments. Cube odd enrollments."""
+    return list(map(lambda x: (x[0], x[1] ** 2) if x[1] % 2 == 0 else (x[0], x[1] ** 3), course_list))  
+print(process_enrollments(courses))
+
+def popular_courses(course_list):
+    """Use filter() to get courses above 50 students."""
+    return list(filter(lambda x: x[1] > 50, course_list))
+print(popular_courses(courses))
