@@ -78,3 +78,105 @@ products = soup.find_all(class_ = "product") #find all div tags with class "prod
 print(products) #print all div tags with class "product"
 for product in products:
     print(product.string) #print the text inside each div tag with class "product"
+
+
+# exercise 6
+html = """
+<html>
+<body>
+<div class ="news">
+<h2> <a href="https://site.com/a">AI is growing fast</a></h2>
+</div>
+<div class="news">
+<h2><a href="https://site.com/b">Python is everywhere</a></h2>
+</div>
+<div class="news">
+<h2><a href="https://site.com/c">Tech jobs in 2026</a></h2>
+</div>
+</body>
+</html>
+"""
+soup= BeautifulSoup(html, "html.parser")
+news_block = soup.find_all("div", class_="news")
+for block in news_block:
+    title = block.h2.a.string
+    link = block.h2.a["href"]
+    print("Title:", title)
+    print("link", link)
+    
+
+# exercise7
+html = """
+<html>
+<body>
+<div class="product">
+<h3>iphone 15 </h3>
+<span class="price">$999</span>
+</div>
+<div class="product">
+<h3>Macbook air</h3>
+<span class="price">$997</span>
+</div>
+"""
+
+soup = BeautifulSoup(html, "html.parser")
+products = soup.find_all("div", class_="product")
+for p in products:
+    name = p.find("h3").text
+    price = p.find("span", class_="price").text
+    print(f"{name} -> {price}")
+
+
+# exercise8
+html ="""
+<html>
+<body>
+<nav>
+<a href="/home">home</a>
+<a href="/about">about</a>
+<a href="/contact>contact</a>
+</nav>
+</body>
+</html>
+
+"""
+
+soup = BeautifulSoup(html, "html.parser")
+links=soup.find_all("a")
+for l in links:
+    print(l.text,"->", l["href"])
+    
+# exercise9
+html ="""
+<ul>
+<li>python</li>
+<li>java</li>
+<li>python for ai</li>
+<li>c++</li>
+</ul>
+
+"""
+
+
+soup= BeautifulSoup(html, "html.parser")
+items = soup.find_all("li")
+for item in items:
+    if "python" in item.text:
+        print("found:", item.text)
+
+
+# exercise10
+
+html = """
+<p> contact us at: info@gmail.com</p>
+<p>support: support@company.com</p>
+"""
+
+soup = BeautifulSoup(html, "html.parser")
+text = soup.get_text()
+words = text.split()
+for word in words:
+    if "@" in word:
+        print("email:", word)
+        
+        
