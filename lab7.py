@@ -212,6 +212,8 @@ data= {
 }
 
 df = pd.DataFrame(data)
+print(df)
+
 df["Total"] = (
     df["Math"] + df["Physics"] + df["Chemistry"]
 )
