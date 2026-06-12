@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 #pandas exercise
@@ -115,4 +116,102 @@ print(df.sort_values("GPA"))
 #exercise24 sort by gpa descending
 print(df.sort_values("GPA", ascending=False))
 
+#exercise set 9: missing data
+#exerciese 25
 
+data = {
+    "Name": ["Abel", "Sara", "John"],
+    "Age": [22, np.nan, 20],
+    "GPA":[3.5, 3.2, 3.9]
+}
+df = pd.DataFrame(data)
+print(df)
+
+#exercise26 checking missing values
+print(df.isnull())
+
+#exercise27 count missing values
+print(df.isnull().sum())
+
+#exercise28 replace missing values with 0
+print(df.fillna(0))
+
+#exercise29 replace missing values using mean
+df["Age"] = df["Age"].fillna(
+    df["Age"].mean()
+)
+print(df)
+
+#exercsie30 remove rows containing missing values
+print(df.dropna())
+
+#exercise set 10: iteration
+#exercise31 print all student names using iterrows()
+for index, row in df.iterrows():
+    print(row["Name"])
+
+#exercsie32 print all student names using itertuples()
+for row in df.itertuples():
+    print(row.Name)
+
+#exercise33 create scholarship column
+#rules, gpa>=3.7 full, gpa>=3.3 partial, otherwise none
+
+def scholarship(gpa):
+    if gpa >=3.7:
+        return "Full"
+    elif gpa >=3.3:
+        return "Partial"
+    return "None"
+df["scholarship"] = df["GPA"].apply(
+    scholarship
+)
+print(df)
+
+#exercise34
+#rules: gpa>=3.7 distinction, gpa>=3 very good, gpa>=2 good, otherwise probation
+
+def classify(gpa):
+    if gpa >= 3.7:
+        return "Distinction"
+    elif gpa >= 3.0:
+        return "Very Good"
+    return "Probation"
+df["Classification"] = df["GPA"].apply(
+    classify
+)
+print(df)
+
+
+
+
+#mini project , student performance analysis
+students = {
+    "StudentID": [1,2,3,4,5],
+    "Name": ["Abel", "Sara", "John", "Hana","Samuel"],
+    "Department": ["CS", "IT", "SE", "DS", "CS"],
+    "Age": [22,21,23,20,24],
+    "GPA": [3.8,3.5,3.2,3.9,3.8]
+
+}
+df = pd.DataFrame(students)
+print("Average GPA")
+print(df["GPA"].mean())
+
+print("\nHighest GPA")
+print(df["GPA"].max())
+
+print("\nLowest GPA")
+print(df["GPA"].min())
+
+
+df["Percentage"] = df["GPA"] * 25
+df["Classification"] = df["GPA"].apply(
+    lambda gpa:
+    "Distinction" if gpa >= 3.7
+    else "Very Good" if gpa >= 3.0
+    else "Good"
+)
+print(df.sort_values(
+    "GPA", ascending=False
+))
