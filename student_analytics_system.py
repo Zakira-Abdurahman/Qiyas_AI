@@ -61,9 +61,9 @@ print(university["scholarship"].sum())
 #13 generate a report for every student
 for index, row in university.iterrows():
      print(f"Student ID : {row['student_id']}")
-     print(f"Name       : {row['name']}")
+     print(f"Name: {row['name']}")
      print(f"Department : {row['departmenet']}")
-     print(f"GPA        : {row['gpa']}")
+     print(f"GPA: {row['gpa']}")
      print(f"Scholarship: {row['scholarship']}")
      print("-" * 35)
 
