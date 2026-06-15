@@ -56,3 +56,61 @@ print(university["gpa"].mean())
 
 #12 total scholarship amount
 print(university["scholarship"].sum())
+
+#iterative tasks 
+#13 generate a report for every student
+for index, row in university.iterrows():
+     print(f"Student ID : {row['student_id']}")
+     print(f"Name       : {row['name']}")
+     print(f"Department : {row['departmenet']}")
+     print(f"GPA        : {row['gpa']}")
+     print(f"Scholarship: {row['scholarship']}")
+     print("-" * 35)
+
+
+#14 create gpa categories: excellent good at risk
+gpa_category = []
+
+for index, row in university.iterrows():
+    if row["gpa"] >= 3.7:
+        gpa_category.append("Excellent")
+    elif row["gpa"] >= 3.0:
+        gpa_category.append("Good")
+    else:
+        gpa_category.append("At Risk")
+
+university["gpa_category"] = gpa_category
+print(university)
+
+#15 create scholarship catagories: full scholarship partial no scholarship
+scholarship_category = []
+
+for index, row in university.iterrows():
+
+    if row["scholarship"] >= 5000:
+        scholarship_category.append("Full Scholarship")
+
+    elif row["scholarship"] > 0:
+        scholarship_category.append("Partial Scholarship")
+
+    else:
+        scholarship_category.append("No Scholarship")
+
+university["scholarship_category"] = scholarship_category
+
+print(university)
+
+#final report
+#create final dataframe containing studnet id , name , department, gpa, gpa category scolarship amount , scholarship catagory 
+final_report = university[[
+    "student_id",
+    "name",
+    "departmenet",
+    "gpa",
+    "gpa_category",
+    "scholarship",
+    "scholarship_category"
+]]
+
+print(final_report)
+
