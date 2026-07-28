@@ -1,3 +1,4 @@
+#lab2
 def greet():
     print("Hello, World!")
 

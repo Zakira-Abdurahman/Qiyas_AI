@@ -1,3 +1,4 @@
+#lab5
 import numpy as np
 sales = np.array([
     [120, 130, 125,140,150], #coffee

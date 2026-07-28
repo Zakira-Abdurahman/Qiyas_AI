@@ -1,3 +1,4 @@
+#lab3
 # Exercise 1: Advanced Student Performance Analyzer
 
 students = [
